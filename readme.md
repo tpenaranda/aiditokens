@@ -49,7 +49,6 @@ $user = User::firstByToken('5cb0b0dddf8ae37a6e8066d4ffd838d91c94bdc7');
      last_name: "Doe",
      created_at: "2019-11-15 07:22:59",
      updated_at: "2019-11-15 07:23:04",
-
 ```
 
 - Custom token generation
