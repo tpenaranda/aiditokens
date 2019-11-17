@@ -41,6 +41,19 @@ $user = User::firstByToken('5cb0b0dddf8ae37a6e8066d4ffd838d91c94bdc7');
 
 ```
 
+- Custom token generation
+
+```
+class User extends Model
+{
+    use TPenaranda\Aiditokens\Traits\Tokens;
+
+    public function generateToken(): string
+    {
+        return str_random(); // Your custom logic goes here.
+    }
+```
+
 ## Advanced usage
 - Bind on RouteServiceProvider for route model explicit binding
 
