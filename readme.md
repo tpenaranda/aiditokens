@@ -30,14 +30,25 @@ class User extends Model
 
 - Get (create if necessary) a token:
 ```
-$userModel->getToken();
+>>> $userModel->getToken();
+=> "5cb0b0dddf8ae37a6e8066d4ffd838d91c94bdc7"
+>>>
 
-$userModel->getToken($expireInHours = 2);
+
+>>> $userModel->getToken($expireInHours = 2);
+=> "efbbc5efa8e0838f58aa86f2f20a468af8262a43"
+>>>
 ```
 
 - Retrieve a model by token:
 ```
 $user = User::firstByToken('5cb0b0dddf8ae37a6e8066d4ffd838d91c94bdc7');
+=> App\User {#3214
+     id: 53,
+     first_name: "John",
+     last_name: "Doe",
+     created_at: "2019-11-15 07:22:59",
+     updated_at: "2019-11-15 07:23:04",
 
 ```
 
@@ -62,13 +73,9 @@ class RouteServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        Route::pattern('userToken', '^.{40}$');
+        Route::pattern('userToken', '^.{40}$'); // Watch out this regex if you're using custom tokens.
 
         Route::bind('userToken', function ($value) {
-            $modelToken = ModelToken::whereValue($value)->whereModelType(User::class)->where(function ($query) {
-                $query->whereNull('expire_at')->orWhere('expire_at', '>', now());
-            })->first();
-
             return User::firstByToken($value) ?? abort(404);
         });
 ```
