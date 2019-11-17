@@ -6,6 +6,13 @@ use TPenaranda\Aiditokens\ModelToken;
 
 trait Tokens
 {
+    public static function firstByToken(string $token): ? self
+    {
+        return ModelToken::whereValue($token)->whereModelClass(get_called_class())->where(function ($query) {
+            $query->whereNull('expire_at')->orWhere('expire_at', '>', now());
+        })->first()->model ?? null;
+    }
+
     public function getToken(int $expireInHours = 0)
     {
         if (empty($expireInHours)) {

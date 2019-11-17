@@ -1,10 +1,12 @@
 {
     "name": "tpenaranda/aiditokens",
     "description": "Use custom tokens instead of IDs on Laravel models.",
-    "keywords": ["laravel", "model", "token"],
+    "homepage": "https://github.com/tpenaranda/aiditokens",
+    "keywords": ["laravel", "model", "token", "aiditoken"],
     "type": "library",
     "require": {
-        "laravel/framework": ">=5.5",
+        "php": "^7.2",
+        "laravel/framework": "^5 || ^6",
         "laravel/helpers": "^1.1"
     },
     "require-dev": {
