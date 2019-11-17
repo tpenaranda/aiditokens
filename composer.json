@@ -1,0 +1,33 @@
+{
+    "name": "tpenaranda/aiditokens",
+    "description": "Use custom tokens instead of IDs on Laravel models.",
+    "keywords": ["laravel", "model", "token"],
+    "type": "library",
+    "require": {
+        "laravel/framework": ">=5.5",
+        "laravel/helpers": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tate Peñaranda",
+            "email": "tate@tpenaranda.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "TPenaranda\\Aiditokens\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TPenaranda\\Aiditokens\\Providers\\AiditokensServiceProvider"
+            ]
+        }
+    }
+}
